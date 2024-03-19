@@ -1,7 +1,7 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import icon from '../../resources/icon.png'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -32,6 +32,10 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+}
+
+if (process.platform === 'darwin') {
+  app.dock.setIcon(resolve(__dirname, 'icon.png'))
 }
 
 // This method will be called when Electron has finished
