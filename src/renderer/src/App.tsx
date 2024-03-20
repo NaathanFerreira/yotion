@@ -1,9 +1,19 @@
 import './styles/global.css'
 
-export function App(): JSX.Element {
+import { Sidebar } from './components/Sidebar'
+import { Header } from './components/Header'
+
+export function App() {
   return (
-    <>
-      <h1 className="text-violet-500">Hello World</h1>
-    </>
+    <div className="h-screen w-screen bg-yotion-900 text-yotion-100 flex">
+      <Sidebar />
+      <div className="flex-1 flex flex-col max-h-screen">
+        <Header />
+
+        <main className="flex-1 flex items-center justify-center text-yotion-400">
+          Selecione ou crie um documento
+        </main>
+      </div>
+    </div>
   )
 }
